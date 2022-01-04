@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天气案例-深度监视</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+    <!-- 监视多极结构中某个属性的变化-->
+    <div id="root">
+        <h2>今天天气{{info}}</h2> 
+        <button @click='changeweather'>点我切换天气</button>
+        <hr/>
+        <h3>a的值是:{{numbers.a}}</h3>
+        <button @click="add">点我a+1</button>
+        <button @click="numbers.b+=1">点我b+1</button>
+
+    </div>
+
+</body>
+<script>
+    Vue.config.productionTip = false
+    const vm = new Vue({
+        el:'#root',
+        data:{
+            name:'sk',
+            weather:true,
+            isHot:true,
+            numbers:{
+                a:1,
+                b:1
+            }
+        },
+        computed:{
+            info(){
+                console.log('info被调用了')
+                return this.weather ? 'hot' : 'mild'
+            }
+
+        },
+        methods: {
+            add(){
+                this.numbers.a++
+            }
+
+        },
+        watch:{
+            weather:{
+                // 当weather发生改变时handler 被调用
+                handler(newValue,oldValue){
+                    console.log('weather被调用了',newValue,oldValue)
+
+                }
+            },
+            // 此处监视多层结构 numbers中的a
+            'numbers.a':{
+                handler(){
+                    console.log("a改变了")
+                }
+            }
+        }
+    
+    })
+    // watch监视也可以这么写:
+    // vm.$watch('weather',{
+    //      // 当weather发生改变时handler 被调用
+    //      handler(newValue,oldValue){
+    //                 console.log('weather被调用了',newValue,oldValue)
+    //      }
+    // })
+</script>
+</html>

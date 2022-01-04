@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>天气案例-监视属性</title>
     <script src="../../js/vue.js"></script>
 </head>
 <body>
@@ -18,7 +18,8 @@
 
      -->
     <div id="root">
-        <h2>今天天气{{info}}</h2> 
+        <h2>今天天气: {{ weather }}</h2> 
+        <h2>{{name}}</h2>
         <button @click='changeweather'>点我切换天气</button>
 
     </div>
@@ -28,36 +29,41 @@
     const vm = new Vue({
         el:'#root',
         data:{
+            isHot:true,
             name:'sk',
-            weather:true
+            weather:"hot"
         },
         computed:{
-            info(){
-                console.log('info被调用了')
-                return this.weather ? 'hot' : 'mild'
-            }
+            // info(){
+            //     console.log('info被调用了')
+            //     return this.weather ? 'hot' : 'mild'
+            // }
 
         },
         methods: {
+            changeWeather(){
+                this.weather = "mild"
+            }
 
         },
-        watch:{
-            weather:{
-                // 当weather发生改变时handler 被调用
-                handler(newValue,oldValue){
-                    console.log('weather被调用了',newValue,oldValue)
+        // watch:{
+        //     weather:{
+        //         // 当weather发生改变时handler 被调用
+        //         handler(newValue,oldValue){
+        //             console.log('weather被调用了',newValue,oldValue)
 
-                }
-            }
-        }
+        //         }
+        //     }
+        // }
     
     })
     // watch监视也可以这么写:
-    // vm.$watch('weather',{
-    //      // 当weather发生改变时handler 被调用
-    //      handler(newValue,oldValue){
-    //                 console.log('weather被调用了',newValue,oldValue)
-    //      }
-    // })
+    vm.$watch('weather',{
+         immediate:true,//初始化时让handler调用一下
+         // 当weather发生改变时handler 被调用
+         handler(newValue,oldValue){
+                    console.log('weather被调用了',newValue,oldValue)
+         }
+    })
 </script>
 </html>
