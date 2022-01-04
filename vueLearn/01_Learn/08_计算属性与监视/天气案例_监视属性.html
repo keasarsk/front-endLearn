@@ -18,10 +18,9 @@
 
      -->
     <div id="root">
-        <h2>今天天气: {{ weather }}</h2> 
+        <h2>今天天气{{info}}</h2> 
         <h2>{{name}}</h2>
         <button @click='changeweather'>点我切换天气</button>
-
     </div>
 </body>
 <script>
@@ -31,21 +30,21 @@
         data:{
             isHot:true,
             name:'sk',
-            weather:"hot"
+            weather:true
         },
         computed:{
-            // info(){
-            //     console.log('info被调用了')
-            //     return this.weather ? 'hot' : 'mild'
-            // }
-
-        },
-        methods: {
-            changeWeather(){
-                this.weather = "mild"
+            info(){
+                console.log('info被调用了')
+                return this.weather ? 'hot' : 'mild'
             }
 
         },
+        methods: {
+            changeweather(){
+                this.weather = !this.weather
+            }
+
+        }
         // watch:{
         //     weather:{
         //         // 当weather发生改变时handler 被调用

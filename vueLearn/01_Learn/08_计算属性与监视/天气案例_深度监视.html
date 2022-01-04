@@ -14,9 +14,8 @@
         <button @click='changeweather'>点我切换天气</button>
         <hr/>
         <h3>a的值是:{{numbers.a}}</h3>
-        <button @click="add">点我a+1</button>
-        <button @click="numbers.b+=1">点我b+1</button>
-
+        <button @click="numbers.a++">点我a+1</button>
+        <button @click="numbers.b++">点我b+1</button>
     </div>
 
 </body>
@@ -25,10 +24,10 @@
     const vm = new Vue({
         el:'#root',
         data:{
+            isHot:true,
             name:'sk',
             weather:true,
-            isHot:true,
-            numbers:{
+            number:{
                 a:1,
                 b:1
             }
@@ -38,31 +37,28 @@
                 console.log('info被调用了')
                 return this.weather ? 'hot' : 'mild'
             }
-
         },
-        methods: {
-            add(){
-                this.numbers.a++
-            }
-
+        methods:{
+            changeweather(){
+                this.weather = !this.weather
         },
         watch:{
             weather:{
                 // 当weather发生改变时handler 被调用
                 handler(newValue,oldValue){
                     console.log('weather被调用了',newValue,oldValue)
-
-                }
-            },
-            // 此处监视多层结构 numbers中的a
-            'numbers.a':{
-                handler(){
-                    console.log("a改变了")
                 }
             }
+            // 此处监视多层结构 numbers中的a
+            // 'numbers.a':{
+            //     handler(){
+            //         console.log("a改变了")
+            //     }
+            // }
         }
-    
     })
+
+
     // watch监视也可以这么写:
     // vm.$watch('weather',{
     //      // 当weather发生改变时handler 被调用
