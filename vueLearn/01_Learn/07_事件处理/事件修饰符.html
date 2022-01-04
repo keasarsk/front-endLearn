@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+    <!-- 
+        vue中的事件修饰符:
+        1.prevent:阻止默认事件（常用）;
+        2.stop:阻止事件冒池（常用）;  事件冒泡:多个组件嵌套时,触发内层组件后会一一触发外层事件 
+        3.once:事件只触发一次（常用):
+        4.capture:使用事件的捕获模式;
+        5.self:只有event.target是当前操作的元素时才触发事件:
+        6.passive:事件的默认行为立即执行，无需等特事件回调执行完毕;
+
+     -->
+    <div>
+        <!-- 事件修饰符之阻止默认事件 -->
+        <a href="https://keasarsk.github.io/" @click.prevent="showInfo">点我</a>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false
+    const vm = new Vue({
+        el:'#root',
+        data:{
+            name:'sk'
+        },
+        methods:{
+            showInfo(e){
+                alert("你好")
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id='root'>
+        姓: <input type="text" v-model='xing'>
+        <br>
+        名: <input type="text" v-model='ming'>
+        <br>
+        姓名: <span>{{fullname()}}</span>
+        <!-- 此处调用fullname函数 不可{{fullname}}这么写,一定要加括号 ,加括号才是挂载的返回值 -->
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false
+    const vm = new Vue({
+        el:'#root',
+        data:{
+            xing:'',
+            ming:''
+        },
+        methods:{
+            fullname(){
+                return this.xing + this.ming
+            }
+        }
+    })
+</script>
+</html>
