@@ -27,7 +27,7 @@
             isHot:true,
             name:'sk',
             weather:true,
-            number:{
+            numbers:{
                 a:1,
                 b:1
             }
@@ -41,6 +41,7 @@
         methods:{
             changeweather(){
                 this.weather = !this.weather
+            }
         },
         watch:{
             weather:{
@@ -48,13 +49,13 @@
                 handler(newValue,oldValue){
                     console.log('weather被调用了',newValue,oldValue)
                 }
-            }
+            },
             // 此处监视多层结构 numbers中的a
-            // 'numbers.a':{
-            //     handler(){
-            //         console.log("a改变了")
-            //     }
-            // }
+            'numbers.a':{
+                handler(){
+                    console.log("a改变了")
+                }
+            }
         }
     })
 
