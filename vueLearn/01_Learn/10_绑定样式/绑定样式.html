@@ -1,0 +1,39 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>绑定样式</title>
+     <style>
+         .basic{
+             font-weight: 100;
+         }
+         .happy{
+             font-weight: 100;
+         }
+         .sad{
+             font-weight: 100;
+         }
+         .normal{
+             font-weight: 100;
+         }
+         .sk1{
+             font-weight: 100;
+         }
+         .sk2{
+             font-weight: 100;
+         }
+         .sk3{
+             font-weight: 100;
+         }
+     </style>
+     <script type="text/javascript" src="../../js/vue.js"></script>
+ </head>
+ <body>
+     <div id="root">
+         <div class="basic" :class="mood" @click="changMood">{{name}}</div>
+     </div>
+     
+ </body>
+ </html>
