@@ -31,9 +31,52 @@
      <script type="text/javascript" src="../../js/vue.js"></script>
  </head>
  <body>
+     <!-- 
+         绑定样式:
+            1.class样式
+            写法:class="xxx" xxx可以是字符串、对象、数组。
+            字符串写法适用于:类名不确定，要动态获取。
+            对象写法适用于:要绑定多个样式,个数不确定，名字也不确定。
+            数组写法适用于:要绑定多个样式，个数确定，名字也确定，但不确定用不用。
+            2. style样式
+            :style="{fontsize: xxx}"其中xxx是动态值。:style="[a,b]"其中a、b是样式对象。
+
+      -->
      <div id="root">
-         <div class="basic" :class="mood" @click="changMood">{{name}}</div>
+         <!-- 绑定class样式 字符串写法 -->
+         <!-- 此处第二个class前有个: 即第二个class内容作为字符串表达式来解析 -->
+         <!-- 适用于要被改变的样式不确定 可以动态去指定 -->
+         <div class="basic" :class="mood" @click="changeMood">{{name}}</div>
+
+         <!-- 绑定class样式 数组写法 -->
+         <!-- 适用于个数不确定,名字不确定,可以在此处加个按钮等 对数组内样式进行添加删除 -->
+         <div class="basic" :class="arr"> {{name}}</div>
+
+         <!-- 绑定class样式 对象写法 -->
+         <!-- 适用于要绑定的样式 个数确定 名字确定,但可动态决定用不用 -->
+         <div class="basic" :class="obj"> {{name}}</div>
+
      </div>
      
  </body>
+ <script>
+     Vue.config.productionTip = false
+     new Vue({
+         el:'#root',
+         data:{
+             name:'sk',
+             mood:'normal',
+             arr:['sk1','sk2','sk3'],
+             obj:{
+                 sk1:false,
+                 sk2:false
+             }
+         },
+         methods: {
+             changeMood(){
+                this.mood = 'happy'
+             }
+         },
+     })
+ </script>
  </html>
