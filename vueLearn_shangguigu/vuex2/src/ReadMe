@@ -1,0 +1,3 @@
+模块化store
+
+    将store中的state actions mutations 分成多组(分别写文件然后import)
