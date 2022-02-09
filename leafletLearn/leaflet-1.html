@@ -1,0 +1,141 @@
+<!-- 
+    https://iowiki.com/leafletjs/leafletjs_markers.html
+ -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>leaflet</title>
+
+        <!-- 加载leaflet css文件 -->
+        <link rel="stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+
+        <!-- 加载leaflet 脚本 -->
+        <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+
+    </head>
+<body>
+    <!-- 创建容器 保存地图 -->
+    <div id = "map" style = "width:900px; height:580px;"></div>
+
+    <script>
+        // 映射选项
+        var mapOptions = {
+            center: [39.08537075415818, 121.81089591217042],
+            zoom: 13.5
+        };
+
+        // 创建地图对象
+        var map = new L.map('map',mapOptions);
+
+        // 创建图层对象
+        var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+
+        // 向地图添加图层
+        map.addLayer(layer);
+
+
+
+        // ----------添加标记
+
+        // 自定义图标
+        var iconOptions = {
+            iconUrl:'logo.png',//图片路径
+            iconSize: [50,50]
+        };
+        var customIcon = L.icon(iconOptions);
+
+        // 设置标记的选项,如图标，可拖动，键盘，标题，alt，zInsexOffset，不透明度，riseOnHover，riseOffset，窗格，可拖动等。
+        // 自定义图标icon
+        var markerOptions = {
+            title:"Mylocation",
+            clickable:true,//可点击
+            draggable:true,//可拖动
+            icon: customIcon,
+        };
+
+        // 实例化Marker类 传递latlng对象
+        var marker = new L.Marker([39.08537075415818, 121.81089591217042],markerOptions);
+
+        // 将弹出窗口绑定到标记
+        marker.bindPopup('hello').openPopup();
+
+        // 使用Marker的addTo()方法将实例化对象添加到map
+        marker.addTo(map);
+
+
+        // ------------添加其他形状
+
+        // 创建一个latlangs变量来存点
+        var latlngs = [
+            [39.08537075415818, 121.81089591217042],
+            [39.08537075415818, 121.81859591217042],
+            [39.09042075415818, 121.81089591217042],
+            [39.09237075415818, 121.82089591217042],
+        ];
+
+        // 折线-------L.polyline()创建 
+        // 将位置作为变量传递，并选择一个选项以指定线条的颜色。
+        var polyline = L.polyline(latlngs,'blue');
+
+        // Polyline类的addTo()方法添加polyline至地图
+        polyline.addTo(map);
+
+
+        // 多边形-------L.polygon()创建
+        // 将位置作为变量传递，并{color:'???'}以指定线条的颜色。
+        var polygon = L.polygon(latlngs,{color:'yellow'});
+
+        // Polygon类的addTo()添加polygon
+        polygon.addTo(map);
+
+
+        // 矩形---------L.rectangle()
+        var latlngs2 = [
+            [39.08042075415818, 121.81089591217042],
+            [39.08237075415818, 121.82089591217042],
+        ];
+        var rectOptions = {color:'Red',weight: 1};
+        var rectangle = L.rectangle(latlngs2,rectOptions);
+        rectangle.addTo(map);
+
+
+        // 圆形----------L.circle()
+        var latlngs3 = [39.08537075415818, 121.81089591217042];
+        var circleOptions = {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0
+        };
+        // 参数:圆心 半径 配置
+        var circle = L.circle(latlngs3,500,circleOptions);
+        circle.addTo(map);
+        
+
+        // 多折线---------L.multiPolyline()
+        var latlngs4 = [
+            [[39.09537075415818, 121.82089591217042],[39.08537075415818, 121.81089591217042]],
+            [[39.08837075415818, 121.81889591217042],[39.07937075415818, 121.82089591217042]]
+        ];
+        var multiPolylineOptions = {color:'green'};
+        var multiPolyline = L.multiPolyline(latlngs4,multiPolylineOptions);
+        multiPolyline.addTo(map);
+
+
+        // 多个多边形--------L.multiPolygon()
+        var latlngs5 = [
+            [[39.07537075415818, 121.82089591217042],[39.08537075415818, 121.82089591217042],[39.07537075415818, 121.80089591217042]],
+            [[39.09037075415818, 121.81889591217042],[39.07937075415818, 121.80089591217042],[39.08537075415818, 121.82089591217042]]
+        ];
+        var multiPolygonOptions = {color:'orange',weight:8};
+        var multiPolygon = L.multiPolygon(latlngs5,multiPolygonOptions);
+        multiPolygon.addTo(map);
+
+        
+    </script>
+</body>
+</html>

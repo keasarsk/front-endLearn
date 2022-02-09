@@ -1,0 +1,48 @@
+<!-- 
+    https://iowiki.com/leafletjs/leafletjs_markers.html
+    组合多个图层作为一个图层组进行管理
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>leaflet-图层组</title>
+    <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+    <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+</head>
+<body>
+    <div id = "map" style = "width: 900px; height: 580px"></div>
+    <script>
+        var mapOptions = {
+            center: [39.08537075415818, 121.81089591217042],
+            zoom: 13.5
+        }
+        var map = new L.map('map',mapOptions);
+        var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+        map.addLayer(layer);
+
+
+        // 图层组----------L.layerGroup()创建图层组
+        // 多个涂层组成一个图层组
+        var markera = new L.Marker([39.08537075415818, 121.81089591217042]);
+        var markerb = new L.Marker([39.09637075415818, 121.81089591217042]);
+        var markerc = new L.Marker([39.08537075415818, 121.82089591217042]);
+
+        var latlngs = [
+            [39.08537075415818, 121.81889591217042],
+            [39.07037075415818, 121.82589591217042],
+            [39.08737075415818, 121.78089591217042]
+        ];
+        var polygonOptions = {
+            color: 'blue',
+        };
+        var polygon = L.polygon(latlngs,polygonOptions);
+        
+        var layerGroup = L.layerGroup([markera,markerb,markerc,polygon]);
+        layerGroup.addTo(map);
+
+    </script>
+</body>
+</html>
