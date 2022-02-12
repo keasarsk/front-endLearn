@@ -1,0 +1,72 @@
+<!-- https://antv-g6.gitee.io/zh/docs/manual/tutorial/example -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- ----------------创建容器 -->
+    <!-- 在 HTML 中创建一个用于容纳 G6 绘制的图的容器，
+        通常为 div  标签。
+        G6 在绘制时会在该容器下追加 canvas 标签，然后将图绘制在其中 -->
+    <div id = 'mountNode'></div>
+
+    <!-- 引入在线资源 -->
+    <!-- <script src="<script src="https://gw.alipayobjects.com/os/lib/antv/g6/4.5.5/dist/g6.min.js"></script>"></script> -->
+
+    <!-- 引入本地js文件 -->
+    <script src="./g6.min.js"></script>
+
+    <script>
+        // ----------------------数据准备
+        // 引入 G6 的数据源为 JSON 格式的对象。该对象中需要有节点（nodes）和边（edges）字段，分别用数组表示
+        const data = {
+            // 点集合
+            // nodes 数组中包含节点对象。每个节点对象中唯一的、必要的 id 以标识不同的节点，x、 y 指定该节点的位置；
+            nodes:[
+                {
+                    id: 'node1', // String，该节点存在则必须，节点的唯一标识
+                    x: 100, // Number，可选，节点位置的 x 值
+                    y: 200, // Number，可选，节点位置的 y 值
+                    label: 'node1',//节点文本
+                    },
+                    {
+                    id: 'node2', // String，该节点存在则必须，节点的唯一标识
+                    x: 300, // Number，可选，节点位置的 x 值
+                    y: 200, // Number，可选，节点位置的 y 值
+                    label: 'node2',//节点文本
+
+                },
+            ],
+            // 边集合
+            // edges 数组中包含边对象。source 和 target 是每条边的必要属性，分别代表了该边的起始点 id 与 目标点 id。
+            edges:[
+                {
+                    source: 'node1', // String，必须，起始点 id
+                    target: 'node2', // String，必须，目标点 id
+                    label: 'edge1',//节点文本
+                },
+            ],
+        }; 
+
+        // -----------------------创建关系图
+        // 创建关系图（实例化）时，至少需要为图设置容器、宽和高
+        const graph = new G6.Graph({
+            container:'mountNode',//指定挂载的容器
+            width: 800,
+            height: 500,
+        });
+
+        // ------------------------配置数据源 渲染
+        graph.data(data);//加载数据
+        graph.render();//渲染
+    </script>
+
+
+</body>
+</html>
