@@ -9,6 +9,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutorial Demo</title>
+
+    <!-- tooltip的样式 -->
+    <style>
+        .g6-tooltip{
+            border: 1px solid #e2e2e2;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #545454;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px 8px;
+            box-shadow: rgb(174, 174, 174) 0px 0px 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,32 +32,54 @@
 
 
     <script>
+
+        // -----------------------插件使用
+        //   Step 1: 引入插件；
+        //   Step 2: 实例化插件；
+        //   Step 3: 在实例化图时将插件的实例配置到图上。
+
+        // --------缩略图 Minimap
+        // 缩略图 (Minimap) 是一种常见的用于快速预览和探索图的工具，可作为导航辅助用户探索大规模图
+        // Minimap 是 G6 的插件之一，引入 G6 后可以直接使用。
+        // 实例化 Minimap 对象，并将其配置到图实例的插件列表里
+        const minimap = new G6.Minimap({
+            size: [100,100],
+            className: 'minimap',
+            type: 'delegate',
+        });
+        // 由于 Minimap 的原理是将主画布内容复制到 minimap 的画布上，在大数据量下可能会造成双倍的绘制效率成本。
+        // 为缓解该问题，Image Minimap 采用另一种机制，根据提供的图片地址或 base64 字符串 graphImg 绘制 <img /> 代替 minimap 上的 canvas。
+        // 该方法可以大大减轻两倍 canvas 绘制的压力。
+        // 但 graphImg 完全交由 G6 的用户控制，需要注意主画布更新时需要使用 updateGraphImg 方法替换 graphImg
+        const imageMinimap = new G6.ImageMinimap({
+            width:200 ,
+            // 缩略图上自己添加的图片
+            graphImg: 'https://gw.alipayobjects.com/mdn/rms_f8c6a0/afts/img/A*eD7nT6tmYgAAAAAAAAAAAABkARQnAQ',
+
+        })
+
+        // --------网格 Grid
+        // 网格可用于辅助用户在拖拽节点时对齐到网格
+        // 实例化
+        const grid = new G6.Grid({});
+
         const graph = new G6.Graph({
             container:'mountNode',//指定挂载的容器
             width: 1000,//画布宽度
             height: 600,
 
-            //#region 
-            // 为了能够将超出画布的图适配到视野中，在实例化图时使用了 fitView  配置项。
-            // 这节将去掉这个特性。因为复杂的布局系统会打破适配的规则，反而会造成更多的困扰。
-            // fitView: true,//设置是否将图适配到画布中；
-            // fitViewPadding: [20, 40, 50, 20],//画布上四周的留白宽度
-            //#endregion
 
+            // 将 minimap 实例配置到图上
+            // plugins: [minimap],
+            // 将imageMinimap实例配置在图上
+            plugins: [imageMinimap],
 
-            // -----------------元素样式
-            // 节点和边的默认样式的配置
-            // 节点默认配置
+            // 将网格配置到图
+            plugins: [grid],
+
+            
+            // 节点在默认状态下的样式配置（style）和其他配置
             defaultNode:{
-                // size: 30,//节点大小
-
-                // // 节点样式配置
-                // style: {
-                //     fill: 'steelblue',// 节点填充色
-                //     stroke: '#666',// 节点描边色
-                //     lineWidth: 1, // 节点描边粗细
-                // },
-
                 // 节点标签文本配置
                 labelCfg: {
                 // 节点上的标签文本样式配置
@@ -56,14 +91,6 @@
 
             // 边在默认状态下的样式配置（style）和其他配置
             defaultEdge: {
-                // ...                 // 边的其他配置
-
-                // // 边样式配置
-                // //移动到动态配置
-                // style: {
-                // opacity: 0.6, // 边透明度
-                // stroke: 'grey', // 边描边颜色
-                // },
 
                 // 边上的标签文本配置
                 labelCfg: {
@@ -86,21 +113,46 @@
 
 
 
-            // ------------------交互行为
+            // ------------------交互行为设置
 
             // ---------内置交互行为modes   拖拽和缩放等
             // 在 G6 中使用内置 Behavior 的方式非常简单，只需要在图实例化时配置 modes
+            // -------------------------------交互工具
+            // 交互工具是指配置到图上交互模式中的工具。使用交互工具时，有两个步骤：
+                // Step 1: 在实例化图时配置 modes；
+                // Step 2: 为交互工具定义样式
+            // ---------tooltip 节点提示框
+            // 节点提示框可以用在边的详细信息的展示。当鼠标滑过节点时，显示一个浮层告知节点的详细信息
+            // 由于 tooltip 实际上是一个悬浮的 <div> 标签，因此可在 HTML 的 <style> 标签或 CSS 中设置样式
+            // ---------edge-tooltip边提示框
             modes: {
-                default: ['drag-canvas', 'zoom-canvas', 'drag-node'], // 允许拖拽画布、放缩画布、拖拽节点
+                default: [
+                    'drag-canvas', 
+                    'zoom-canvas', 
+                    'drag-node',
+                    {
+                        type: 'tooltip',
+                        formatText(model){
+                            const text = 'label:' + model.label + '<br/> class' + model.class;
+                            return text;
+                        },
+                    },
+                    {
+                        type: 'edge-tooltip',
+                        formatText(model){
+                            const text =  'source: ' +
+                                        model.source +
+                                        '<br/> target: ' +
+                                        model.target +
+                                        '<br/> weight: ' +
+                                        model.weight;
+                            return text;
+                        },
+                    },
+                ], // 允许拖拽画布、放缩画布、拖拽节点
             },
             
-            //----------状态式交互state
-            // 希望通过交互可以将元素样式变成特定样式，如鼠标点击 hover 节点、点击节点、点击边时，样式发生了变化 
-            // 两步：
-                // Step 1: 设置各状态下的元素样式；
-                // Step 2: 监听事件并切换元素状态。
-            // 实例化图时，通过 nodeStateStyles 和 edgeStateStyles 两个配置项可以配置元素在不同状态下的样式
-            // 节点不同状态的集合
+            
             nodeStateStyles: {
                 hover: {//鼠标hover节点时
                     fill : 'lightsteelblue',
@@ -110,7 +162,7 @@
                     lineWidth:3,
                 }
             },
-            // 边不同状态下的样式集合
+            
             edgeStateStyles: {
                 // 鼠标点击边，即 click 状态为 true 时的样式
                 click: {
@@ -120,7 +172,7 @@
         });
 
 
-        // 
+        
         const main = async () => {
             const response = await fetch(
                 'https://gw.alipayobjects.com/os/basement_prod/6cae02ab-4c29-44b2-b1fd-4005688febcb.json',
@@ -129,7 +181,6 @@
 
 
             // 在数据中动态配置样式
-            // 动态配置样式可以覆盖全局默认配置
             const nodes = remoteData.nodes;
             const edges = remoteData.edges;
             // 遍历每个节点进行设置
@@ -174,12 +225,10 @@
             graph.render();
 
 
+            imageMinimap.updateGraphImg(img);// 使用新的图片（用户自己生成）替换 minimap 图片
+
+
             // 监听
-            // 在图实例 graph 上监听
-            // graph.on('元素类型:事件名', (e) => {
-            // // do something
-            // });
-            // 监听鼠标hover节点
             graph.on('node:mouseenter', (e) => {
                 const nodeItem = e.item;
                 // 设置目标节点的 hover 状态 为 true
