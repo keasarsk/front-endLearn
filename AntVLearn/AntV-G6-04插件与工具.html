@@ -100,7 +100,7 @@
 
 
 
-            // ------------------图布局Layout
+            // 图布局Layout
             layout: {
                 // type赋值可选，布局的方法及其配置项，默认为 random 布局。
                 type: 'force', // 指定为力导向布局
@@ -113,17 +113,15 @@
 
 
 
-            // ------------------交互行为设置
-
-            // ---------内置交互行为modes   拖拽和缩放等
-            // 在 G6 中使用内置 Behavior 的方式非常简单，只需要在图实例化时配置 modes
+            // 交互行为设置
+            // 内置交互行为modes
             // -------------------------------交互工具
             // 交互工具是指配置到图上交互模式中的工具。使用交互工具时，有两个步骤：
                 // Step 1: 在实例化图时配置 modes；
                 // Step 2: 为交互工具定义样式
             // ---------tooltip 节点提示框
-            // 节点提示框可以用在边的详细信息的展示。当鼠标滑过节点时，显示一个浮层告知节点的详细信息
-            // 由于 tooltip 实际上是一个悬浮的 <div> 标签，因此可在 HTML 的 <style> 标签或 CSS 中设置样式
+                // 节点提示框可以用在边的详细信息的展示。当鼠标滑过节点时，显示一个浮层告知节点的详细信息
+                // 由于 tooltip 实际上是一个悬浮的 <div> 标签，因此可在 HTML 的 <style> 标签或 CSS 中设置样式
             // ---------edge-tooltip边提示框
             modes: {
                 default: [
@@ -149,7 +147,7 @@
                             return text;
                         },
                     },
-                ], // 允许拖拽画布、放缩画布、拖拽节点
+                ], 
             },
             
             
@@ -180,7 +178,7 @@
             const remoteData = await response.json();
 
 
-            // 在数据中动态配置样式
+            // 元素动态配置
             const nodes = remoteData.nodes;
             const edges = remoteData.edges;
             // 遍历每个节点进行设置
@@ -225,6 +223,7 @@
             graph.render();
 
 
+            // -----------------Minimap
             imageMinimap.updateGraphImg(img);// 使用新的图片（用户自己生成）替换 minimap 图片
 
 
@@ -254,16 +253,16 @@
             graph.setItemState(nodeItem, 'click', true);
             });
 
-            // 监听鼠标点击节点
+            // 监听鼠标点击边
             graph.on('edge:click', (e) => {
-            // 先将所有当前有 click 状态的边的 click 状态置为 false
-            const clickEdges = graph.findAllByState('edge', 'click');
-            clickEdges.forEach((ce) => {
-                graph.setItemState(ce, 'click', false);
-            });
-            const edgeItem = e.item;
-            // 设置目标边的 click 状态 为 true
-            graph.setItemState(edgeItem, 'click', true);
+                // 先将所有当前有 click 状态的边的 click 状态置为 false
+                const clickEdges = graph.findAllByState('edge', 'click');
+                clickEdges.forEach((ce) => {
+                    graph.setItemState(ce, 'click', false);
+                });
+                const edgeItem = e.item;
+                // 设置目标边的 click 状态 为 true
+                graph.setItemState(edgeItem, 'click', true);
             });
         };
         main();

@@ -8,7 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
+<!-- 
+    1. 创建容器
+    2. 引入在线或本地 .js资源
+    3. 准备data : 节点和边
+    4. 实例化graph 并指定容器
+    5. graph添加数据
+    6. garph渲染
+ -->
 <body>
     <!-- ----------------创建容器 -->
     <!-- 在 HTML 中创建一个用于容纳 G6 绘制的图的容器，
@@ -26,7 +33,7 @@
         // ----------------------数据准备
         // 引入 G6 的数据源为 JSON 格式的对象。该对象中需要有节点（nodes）和边（edges）字段，分别用数组表示
         const data = {
-            // 点集合
+            // 节点集合
             // nodes 数组中包含节点对象。每个节点对象中唯一的、必要的 id 以标识不同的节点，x、 y 指定该节点的位置；
             nodes:[
                 {

@@ -10,7 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutorial Demo</title>
 </head>
-
+<!-- 
+    图的交互
+        内置交互: 图的拖拽和缩放等
+            实例化图时添加modes配置
+        状态交互: click或者hover元素时的交互
+            1. 实例化图时配置click 和 hover元素时的样式变化
+            2. 监听事件挂载在图的实例化对象上
+ -->
 <body>
     <div id = 'mountNode'></div>
 
@@ -23,17 +30,12 @@
             container:'mountNode',//指定挂载的容器
             width: 1000,//画布宽度
             height: 600,
-
-            //#region 
-            // 为了能够将超出画布的图适配到视野中，在实例化图时使用了 fitView  配置项。
-            // 这节将去掉这个特性。因为复杂的布局系统会打破适配的规则，反而会造成更多的困扰。
-            // fitView: true,//设置是否将图适配到画布中；
-            // fitViewPadding: [20, 40, 50, 20],//画布上四周的留白宽度
-            //#endregion
+            fitView: true,//设置是否将图适配到画布中；
+            fitViewPadding: [20, 40, 50, 20],//画布上四周的留白宽度
+            
 
 
-            // -----------------元素样式
-            // 节点和边的默认样式的配置
+            // 元素默认配置
             // 节点默认配置
             defaultNode:{
                 // size: 30,//节点大小
@@ -53,7 +55,6 @@
                     },
                 },
             },
-
             // 边在默认状态下的样式配置（style）和其他配置
             defaultEdge: {
                 // ...                 // 边的其他配置
@@ -71,9 +72,7 @@
                 },
             },
 
-
-
-            // ------------------图布局Layout
+            // 图布局Layout
             layout: {
                 // type赋值可选，布局的方法及其配置项，默认为 random 布局。
                 type: 'force', // 指定为力导向布局
@@ -86,9 +85,8 @@
 
 
 
-            // ------------------交互行为
-
-            // ---------内置交互行为modes   拖拽和缩放等
+            // -------------------------交互行为
+            // ---------内置交互行为modes   
             // 在 G6 中使用内置 Behavior 的方式非常简单，只需要在图实例化时配置 modes
             modes: {
                 default: ['drag-canvas', 'zoom-canvas', 'drag-node'], // 允许拖拽画布、放缩画布、拖拽节点
@@ -100,7 +98,7 @@
                 // Step 1: 设置各状态下的元素样式；
                 // Step 2: 监听事件并切换元素状态。
             // 实例化图时，通过 nodeStateStyles 和 edgeStateStyles 两个配置项可以配置元素在不同状态下的样式
-            // 节点不同状态的集合
+            // 节点不同状态的样式集合
             nodeStateStyles: {
                 hover: {//鼠标hover节点时
                     fill : 'lightsteelblue',
@@ -128,8 +126,7 @@
             const remoteData = await response.json();
 
 
-            // 在数据中动态配置样式
-            // 动态配置样式可以覆盖全局默认配置
+            // 动态配置样式
             const nodes = remoteData.nodes;
             const edges = remoteData.edges;
             // 遍历每个节点进行设置
@@ -171,10 +168,9 @@
             });
 
             graph.data(remoteData);
-            graph.render();
 
 
-            // 监听
+            // ---------------------监听
             // 在图实例 graph 上监听
             // graph.on('元素类型:事件名', (e) => {
             // // do something
@@ -186,7 +182,7 @@
                 graph.setItemState(nodeItem, 'hover', true);
             });
             
-            // 监听鼠标离开节点
+            // 监听鼠标hover离开节点
             graph.on('node:mouseleave', (e) => {
             const nodeItem = e.item;
             // 设置目标节点的 hover 状态 false
@@ -205,17 +201,19 @@
             graph.setItemState(nodeItem, 'click', true);
             });
 
-            // 监听鼠标点击节点
+            // 监听鼠标点击边
             graph.on('edge:click', (e) => {
-            // 先将所有当前有 click 状态的边的 click 状态置为 false
-            const clickEdges = graph.findAllByState('edge', 'click');
-            clickEdges.forEach((ce) => {
-                graph.setItemState(ce, 'click', false);
+                // 先将所有当前有 click 状态的边的 click 状态置为 false
+                const clickEdges = graph.findAllByState('edge', 'click');
+                clickEdges.forEach((ce) => {
+                    graph.setItemState(ce, 'click', false);
+                });
+                const edgeItem = e.item;
+                // 设置目标边的 click 状态 为 true
+                graph.setItemState(edgeItem, 'click', true);
             });
-            const edgeItem = e.item;
-            // 设置目标边的 click 状态 为 true
-            graph.setItemState(edgeItem, 'click', true);
-            });
+
+            graph.render();
         };
         main();
     </script>
