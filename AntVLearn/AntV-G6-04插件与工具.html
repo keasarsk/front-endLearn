@@ -23,22 +23,27 @@
         }
     </style>
 </head>
-
+<!-- 
+    为辅助用户在图上探索，G6 提供了一些辅助工具，其中一部分是插件工具，另一部分是交互工具。
+    插件工具: 
+       Step 1: 引入插件；
+       Step 2: 实例化插件；
+       Step 3: 在实例化图时将插件的实例配置到图上。
+    交互工具: 交互工具是指配置到图上交互模式中的工具
+         Step 1: 在实例化图时配置 modes；
+         Step 2: 为交互工具定义样式
+ -->
 <body>
     <div id = 'mountNode'></div>
 
     <!-- <script src="./g6.min.js"></script> -->
     <script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.g6-3.7.1/dist/g6.min.js"></script>
 
-
     <script>
 
-        // -----------------------插件使用
-        //   Step 1: 引入插件；
-        //   Step 2: 实例化插件；
-        //   Step 3: 在实例化图时将插件的实例配置到图上。
+        
 
-        // --------缩略图 Minimap
+        // ---------------缩略图 Minimap
         // 缩略图 (Minimap) 是一种常见的用于快速预览和探索图的工具，可作为导航辅助用户探索大规模图
         // Minimap 是 G6 的插件之一，引入 G6 后可以直接使用。
         // 实例化 Minimap 对象，并将其配置到图实例的插件列表里
@@ -58,7 +63,7 @@
 
         })
 
-        // --------网格 Grid
+        // ----------------网格 Grid
         // 网格可用于辅助用户在拖拽节点时对齐到网格
         // 实例化
         const grid = new G6.Grid({});
@@ -88,7 +93,6 @@
                     },
                 },
             },
-
             // 边在默认状态下的样式配置（style）和其他配置
             defaultEdge: {
 
@@ -97,8 +101,6 @@
                 autoRotate: true, // 边上的标签文本根据边的方向旋转
                 },
             },
-
-
 
             // 图布局Layout
             layout: {
@@ -112,17 +114,12 @@
             },
 
 
-
             // 交互行为设置
             // 内置交互行为modes
-            // -------------------------------交互工具
-            // 交互工具是指配置到图上交互模式中的工具。使用交互工具时，有两个步骤：
-                // Step 1: 在实例化图时配置 modes；
-                // Step 2: 为交互工具定义样式
-            // ---------tooltip 节点提示框
+            // ------------------tooltip 节点提示框
                 // 节点提示框可以用在边的详细信息的展示。当鼠标滑过节点时，显示一个浮层告知节点的详细信息
                 // 由于 tooltip 实际上是一个悬浮的 <div> 标签，因此可在 HTML 的 <style> 标签或 CSS 中设置样式
-            // ---------edge-tooltip边提示框
+            // ------------------edge-tooltip边提示框
             modes: {
                 default: [
                     'drag-canvas', 
@@ -233,14 +230,12 @@
                 // 设置目标节点的 hover 状态 为 true
                 graph.setItemState(nodeItem, 'hover', true);
             });
-            
             // 监听鼠标离开节点
             graph.on('node:mouseleave', (e) => {
             const nodeItem = e.item;
             // 设置目标节点的 hover 状态 false
             graph.setItemState(nodeItem, 'hover', false);
             });
-            
             // 监听鼠标点击节点
             graph.on('node:click', (e) => {
             // 先将所有当前有 click 状态的节点的 click 状态置为 false
@@ -252,7 +247,6 @@
             // 设置目标节点的 click 状态 为 true
             graph.setItemState(nodeItem, 'click', true);
             });
-
             // 监听鼠标点击边
             graph.on('edge:click', (e) => {
                 // 先将所有当前有 click 状态的边的 click 状态置为 false
