@@ -35,15 +35,14 @@
                 height: window.innerHeight,//window.innerHeight 浏览器窗口高度
                 padding: 'auto',//内边距
             });
-            chart.coord().transpose();
+            
             // 转换在极坐标系下
             chart.coord('theta',{
-                radius: 0.55,//坐标系半径
+                radius: 0.55,//坐标系外半径
                 innerRadius: 0.49,//内半径 这之后饼图变为环图
             });
-            chart.source(data);
 
-            
+            chart.source(data);
 
             chart.intervalStack().position('layout*value').color('type', colors).size(100)
                 .label('value',{
@@ -58,6 +57,10 @@
                     }
                 });
 
+
+            // 让图表脱离静态，响应交互动作：当图像为静默状态时，圆环中心显示福尔摩斯的剪影，而鼠标滑过圆环各部分时，剪影消失了，响应的数据信息浮现出来。
+            // 为了完成这个效果，我们需要G2辅助元素(guide)的帮助。
+            // guide支持多种形态，在这个例子中，我们需要两个html形态的guide，第一个用来绘制福尔摩斯的剪影，第二个用来承载数据信息。
             chart.guide().html({
                 position: ['50%', '50%'],
                 alignX:'middle',

@@ -1,0 +1,132 @@
+<!-- https://antv-g2.gitee.io/zh/docs/manual/getting-started -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- 
+    G2步骤
+        1. 引入在线或本地资源
+        2. 创建容器 设置容器id
+        3. 设置或获取数据
+        4. 创建图表实例
+        5. 实例上绑定数据
+        6. 实例上配置坐标轴、图形、标签等
+        7. 渲染图表
+ -->
+
+<body>
+    <!-- 引入在线资源 -->
+    <!-- <script src="https://gw.alipayobjects.com/os/lib/antv/g2/3.4.10/dist/g2.min.js"></script> -->
+    <!-- 引入本地js文件 -->
+    <script src="./g2.min.js"></script>
+
+    <!-- 创建容器 设置id  -->
+    <div id="container"> </div>
+
+    <script>
+        // 数据
+        const data = [
+            { name: 'Baker Street Irregulars', count: 3 },
+            { name: 'Moriarty', count: 3 },
+            { name: 'Mycroft Holmes', count: 4 },
+            { name: 'Stanley Hopkins', count: 4 },
+            { name: 'Tobias Gregson', count: 4 },
+            { name: 'Inspector Lestrade', count: 13 },
+            { name: 'MRS Hudson', count: 14 },
+            { name: 'DR.Watson', count: 58 },
+            { name: 'Sherlock Holmes', count: 60 },
+        ];
+
+        // 自定义柱子形状
+        // 注册一个shape,命名为stackImage
+        const Shape = G2.Shape;
+        Shape.registerShape('interval','stackImage',{
+            // getPoints()方法
+            // 获取一个柱子的四个角
+            getPoints(cfg){
+                const x = cfg.x;
+                const y = cfg.y;
+                const y0 = cfg.y0;
+                const size = cfg.size;
+                return[
+                    {x,y},
+                    {x: x+size,y},
+                    {x: x+size,y0},
+                    {x,y:y0}
+                ];
+            },
+
+            // drawShape()
+            // 放置Shape
+            drawShape(cfg,container){
+                cfg.points = this.parsePoints(cfg.points); // 上一步getPoints()方法中获取的柱形四角数据
+                const pointLength = cfg.points.length;
+                const width = cfg.points[0].x - cfg.points[pointLength - 1].x;//通过四角数据获取柱形宽度
+                const height = cfg.points[0].y - cfg.points[1].y;//通过四角数据获取柱形高度
+                const count = cfg.origin._origin.count;//获取柱形所关联的数据，找到count字段
+                const img_width = width / count;//计算得出书本icon宽度（高度为柱形高度）
+                // 把书本画上去
+                const images = [];
+                for (let i = 0; i < count; i++) {
+                const x = cfg.points[pointLength - 1].x + i * img_width;
+                const y = cfg.points[0].y - height / 2;
+                const offset = (i % 2) ? -2 : 2;
+                container.addShape('image', {
+                    attrs: {
+                        x,
+                        y: y + offset,
+                        width: img_width,
+                        height,
+                        img: 'https://gw.alipayobjects.com/zos/rmsportal/KFzZmWhVdFgJMJHcVedn.png'
+                    }
+                });
+                }
+                return images[0];
+            }
+        });
+
+        // 创建图表实例 并指定容器id
+        const chart = new G2.Chart({
+            container:'container',//指定图表容器id
+            forceFit:true,// 宽度自适应
+            height: window.innerHeight,//浏览器显示区域的高度
+            padding: [ 16, 48, 16, 176]// 内边距
+        });
+
+        // 绑定数据
+        chart.source(data);
+
+        // axis配置坐标轴
+        // ('count',false) 关闭count对应坐标轴
+        chart.axis('count',false);
+
+        // 绘制柱状图
+        // .label()给数据打上标签
+        chart.interval().position('name*count').shape('stackImage')
+            .label('count',{
+                offset: 10,
+                textStyle:{
+                    fontFamily: 'momotype Corsiva',
+                    fontSize: 20,
+                    fill: '#5D5A5E'
+                }
+            });
+
+        // chart.interval().position('name*count').shape('stackImage');
+
+
+        // 横纵坐标转换
+        chart.coord().transpose();
+
+        // 渲染图表
+        chart.render();
+    </script>
+        
+    
+</body>
+</html>
