@@ -1,80 +1,60 @@
-<icml version="0.1" type="antv" template="g2" width="720" height="480">
-  <meta name="title" content="福尔摩斯 - 1.3" />
-  <style>body{background-color: #fce9d3;}</style>
-  <data type="javascript">
-    const data = [ 
-      { name: 'Baker Street Irregulars', count: 3 },
-      { name: 'Moriarty', count: 3 },
-      { name: 'Mycroft Holmes', count: 4 },
-      { name: 'Stanley Hopkins', count: 4 },
-      { name: 'Tobias Gregson', count: 4 },
-      { name: 'Inspector Lestrade', count: 13 },
-      { name: 'MRS Hudson', count: 14 },
-      { name: 'DR.Watson', count: 58 },
-      { name: 'Sherlock Holmes', count: 60 },
-      ];
-  </data>
-  <code type="javascript">
-// 自定义shape
-const Shape = G2.Shape;
-Shape.registerShape('interval', 'stackImage', {
-  // get points
-  getPoints(cfg) {
-    const x = cfg.x;
-    const y = cfg.y;
-    const y0 = cfg.y0;
-    const size = cfg.size;
-    return [
-      { x, y },
-      { x: x + size, y },
-      { x: x + size, y: y0 },
-      { x, y: y0 }
-    ];
-  },
-  // draw shape
-  drawShape(cfg, container) {
-    cfg.points = this.parsePoints(cfg.points);
-    const pointLength = cfg.points.length;
-    const width = cfg.points[0].x - cfg.points[pointLength - 1].x;
-    const height = cfg.points[0].y - cfg.points[1].y;
-    const count = cfg.origin._origin.count;
-    const img_width = width / count;
-    const images = [];
-    for (let i = 0; i < count; i++) {
-      const x = cfg.points[pointLength - 1].x + i * img_width;
-      const y = cfg.points[0].y - height / 2;
-      const offset = (i % 2) ? -2 : 2;
-      container.addShape('image', {
-        attrs: {
-          x,
-          y: y + offset,
-          width: img_width,
-          height,
-          img: 'https://gw.alipayobjects.com/zos/rmsportal/KFzZmWhVdFgJMJHcVedn.png'
-        }
-      });
-    }
-    return images[0];
-  }
-});
-const chart = new G2.Chart({
-  container: 'mountNode',
-  forceFit: true,
-  height: window.innerHeight,
-  padding: [ 16, 48, 16, 176 ]
-});
-chart.coord().transpose();
-chart.source(data);
-chart.axis('count', false);
-chart.interval().position('name*count').shape('stackImage')
-  .label('count', {
-    offset: 10,
-    textStyle: {
-      fontFamily: 'monotype Corsiva',
-      fontSize: 20,
-      fill: '#5D5A5E'
-    }
-  });
-chart.render();
-  </code>
-</icml>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doc</title>
+</head>
+
+
+<!-- 引入在线资源 -->
+<!-- <script src="https://gw.alipayobjects.com/os/lib/antv/g2/3.4.10/dist/g2.min.js"></script> -->
+
+<!-- 引入本地js文件 -->
+
+
+
+<body>
+    <script src="./g2.min.js"></script>
+    <div id="c1"> </div>
+    <script>
+        const data = [
+          { year: '1951 年', sales: 38 },
+          { year: '1952 年', sales: 52 },
+          { year: '1956 年', sales: 61 },
+          { year: '1957 年', sales: 145 },
+          { year: '1958 年', sales: 48 },
+          { year: '1959 年', sales: 38 },
+          { year: '1960 年', sales: 38 },
+          { year: '1962 年', sales: 38 },
+        ];
+        const chart = new G2.Chart({
+          container: 'c1',
+          autoFit: false,
+          width: 400,
+          height: 300,
+        });
+
+        chart.source(data);
+        chart.scale('year', {
+          range: [0.25, 0.75],
+        });
+        chart.scale('sales', {
+          min: 0,
+          max: 200,
+          tickInterval: 100,
+        });
+
+        chart.line().position('year*sales');
+
+        // chart.legend('x',false);
+
+        chart.option('slider', {
+          end: 0.1,
+        });
+
+        chart.render();
+    </script>
+</body>
+</html>
