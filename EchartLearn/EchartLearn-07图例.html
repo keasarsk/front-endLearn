@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="echarts.js"></script>
+</head>
+<body>
+    <div id="main" style="width: 600px;height:400px;"></div>
+
+    <script>
+        var myChart = echarts.init(document.getElementById('main'));
+
+        var option = {
+            tooltip: {//标签
+                trigger: 'axis',
+                axisPointer: { type: 'cross' }
+            },
+
+            //                 图例
+            legend: {
+                type: 'scroll',
+                orient: 'vertical',
+                right: 10,
+                top: 10,
+                bottom: 20,
+                icon: 'pin',
+                // ????
+                // data: ['图例一', '图例二', '图例三'],
+                backgroundColor: '#321',
+                textStyle: {
+                    color: '#123'
+                }
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    axisTick: {// axisTick 轴线配置
+                        alignWithLabel: true
+                    },
+                    data: [
+                        '1月',
+                        '2月',
+                        '3月',
+                        '4月',
+                        '5月',
+                        '6月',
+                        '7月',
+                        '8月',
+                        '9月',
+                        '10月',
+                        '11月',
+                        '12月'
+                    ]
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    name: '降水量',
+                    min: 0,
+                    max: 250,
+                    position: 'right',//右y轴
+                    axisLabel: {
+                        formatter: '{value} ml'
+                    }
+                },
+                {
+                    type: 'value',
+                    name: '温度',
+                    min: 0,
+                    max: 25,
+                    position: 'left',//左y轴
+                    axisLabel: {
+                        formatter: '{value} °C'
+                    }
+                }
+            ],
+            series: [
+                {
+                    name: '降水量',
+                    type: 'bar',//柱
+                    yAxisIndex: 0,
+                    data: [6, 32, 70, 86, 68.7, 100.7, 125.6, 112.2, 78.7, 48.8, 36.0, 19.3]
+                },
+                {
+                    name: '温度',
+                    type: 'line',//线
+                    smooth: true,
+                    yAxisIndex: 1,
+                    data: [
+                    6.0,
+                    10.2,
+                    10.3,
+                    11.5,
+                    10.3,
+                    13.2,
+                    14.3,
+                    16.4,
+                    18.0,
+                    16.5,
+                    12.0,
+                    5.2
+                ]
+                }
+            ]
+        };
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

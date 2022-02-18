@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ECharts</title>
+    <!-- 引入 ECharts 文件 -->
+    <script src="echarts.js"></script>
+</head>
+
+<!-- 
+1. echart初始化时不指定宽高
+    需要div在定义时已指定宽高
+
+2. echart初始化时自定宽高
+    div定义的宽高被覆盖
+
+3. 监听图表容器的大小并改变图表大小
+
+-->
+
+<body>
+    
+    <!--              1             -->
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <!-- <div id="main" style="width: 600px;height:400px;"></div> -->
+
+    <!--              3             -->
+    <div id="main"></div>
+    <style>
+    #main,
+    html,
+    body {
+        width: 100%;
+    }
+    #main {
+        height: 400px;
+    }
+    </style>
+
+    <script type="text/javascript">
+    //                  1
+    var myChart = echarts.init(document.getElementById('main'));
+
+    //                  2
+    // 也可在初始化时候指定宽度高度:
+    // var myChart = echarts.init(document.getElementById('main'), null, {
+    //   width: 600,
+    //   height: 400
+    // });
+
+    //                  3
+    // 例如 适应浏览器窗口宽度
+    // 监听页面的 window.onresize 事件获取浏览器大小改变的事件，
+    // 然后调用 echartsInstance.resize 改变图表的大小
+    window.onresize = function() {
+        myChart.resize();
+    };
+    
+    var option = {
+        title: {
+        text: 'ECharts 入门示例'
+        },
+        tooltip: {},
+        legend: {
+        data: ['销量']
+        },
+        xAxis: {
+        data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+        },
+        yAxis: {},
+        series: [
+        {
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+        }
+        ]
+    };
+
+    myChart.setOption(option);
+    </script>
+</body>
+</html>

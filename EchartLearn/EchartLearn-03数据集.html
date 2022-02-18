@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ECharts</title>
+    <!-- 引入 ECharts 文件 -->
+    <script src="echarts.js"></script>
+</head>
+
+<!-- 
+    使用数据集管理数据
+        多组件复用
+        数据与其他配置分离
+
+    前几节是在xAxis series等地方放置数据
+    现在数据放在数据集dataset中
+
+    使系列对应到 dataset 的每一行还是列
+        seriesLayoutBy: 'row'
+-->
+
+<body>
+    <div id="main" style="width: 600px;height:400px;"></div>
+
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main'));
+        
+        var option = {
+            title: {
+                text: 'ECharts dataset示例'   
+            },
+            tooltip: {},
+            legend: {
+                data: ['销量']
+            },
+            
+            //                    dataset
+            dataset: {
+                // 提供一份数据。
+                source: [
+                    ['product', '2015', '2016', '2017'],
+                    ['Matcha Latte', 43.3, 85.8, 93.7],
+                    ['Milk Tea', 83.1, 73.4, 55.1],
+                    ['Cheese Cocoa', 86.4, 65.2, 82.5],
+                    ['Walnut Brownie', 72.4, 53.9, 39.1]
+                ]
+
+                // // 对象数组格式数据
+                // // 用 dimensions 指定了维度的顺序。直角坐标系中，如果 X 轴 type 为 category，
+                // // 默认把第一个维度映射到 X 轴上，后面维度映射到 Y 轴上。
+                // dimensions: ['product', '2015', '2016', '2017'],
+                // source: [
+                    // { product: 'Matcha Latte', '2015': 43.3, '2016': 85.8, '2017': 93.7 },
+                    // { product: 'Milk Tea', '2015': 83.1, '2016': 73.4, '2017': 55.1 },
+                    // { product: 'Cheese Cocoa', '2015': 86.4, '2016': 65.2, '2017': 82.5 },
+                    // { product: 'Walnut Brownie', '2015': 72.4, '2016': 53.9, '2017': 39.1 }
+                // ]
+            },
+            
+            // 声明两个 X 轴，类目轴（category）。默认情况下，类目轴对应到 dataset 第一列。
+            xAxis: [
+                { type: 'category', gridIndex: 0 },
+                { type: 'category', gridIndex: 1 },
+            ],
+            // 声明两个 Y 轴，数值轴。
+            yAxis: [
+                { gridIndex: 0},
+                { gridIndex: 1}
+            ],
+
+            // ???
+            grid: [{ bottom: '55%' }, { top: '55%' }],
+
+            // 声明多个 bar 系列，默认情况下，每个系列会自动对应到 dataset 的每一列。
+            series: [
+                // 这几个系列会出现在第一个直角坐标系中，每个系列对应到 dataset 的每一行。
+                { type: 'bar', seriesLayoutBy: 'row' },
+                { type: 'bar', seriesLayoutBy: 'row' },
+                { type: 'bar', seriesLayoutBy: 'row' },
+
+                // 这几个系列会出现在第二个直角坐标系中，每个系列对应到 dataset 的每一列。
+                { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 },
+                { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 },
+                { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 },
+                { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 }
+            ]
+        };
+
+        myChart.setOption(option);
+    </script>
+</body>
+</html>
