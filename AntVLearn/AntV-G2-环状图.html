@@ -44,7 +44,10 @@
 
             chart.source(data);
 
-            chart.intervalStack().position('layout*value').color('type', colors).size(100)
+            chart.intervalStack()
+                .position('layout*value')
+                .color('type', colors)
+                .size(100)
                 .label('value',{
                     offset:-5,
                     textStyle: {
