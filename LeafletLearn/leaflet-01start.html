@@ -18,6 +18,14 @@
 
 
     </head>
+    <!-- 
+        1. 加载leaflet css
+        2. 加载leaflet 脚本
+        3. 创建容器div 并指定id
+        4. 配置map的映射选项 并创建地图对象map 
+        5. 创建图层layer
+        6. 向地图添加图层
+     -->
 <body>
     <!-- 创建容器 保存地图 -->
     <div id = "map" style = "width:900px; height:580px;"></div>
@@ -50,7 +58,7 @@
         var customIcon = L.icon(iconOptions);
 
         // 设置标记的选项,如图标，可拖动，键盘，标题，alt，zInsexOffset，不透明度，riseOnHover，riseOffset，窗格，可拖动等。
-        // 自定义图标icon
+        // icon:自定义图标
         var markerOptions = {
             title:"Mylocation",
             clickable:true,//可点击
