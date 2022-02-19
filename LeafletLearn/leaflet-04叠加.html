@@ -1,14 +1,17 @@
 <!-- 
     https://iowiki.com/leafletjs/leafletjs_markers.html
-    组合多个图层作为一个图层组进行管理
  -->
+
+ <!-- 
+    使用L.imageOverlay()创建图像叠加层
+  -->
  <!DOCTYPE html>
  <html lang="en">
  <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>leaflet-事件处理</title>
+     <title>leaflet-叠加</title>
      <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
      <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
  </head>
@@ -24,14 +27,12 @@
          map.addLayer(layer);
 
 
-        //  ---------地图上点击添加标记
-        map.on("click",function(e){
-            new L.Marker([e.latlng.lat,e.latlng.lng]).addTo(map);
-        })
-        
- 
- 
- 
+        // 使用L.imageOverlay()创建 图像叠加层
+        // 图片的url和边界
+        var imageUrl = 'logo.png';
+        var imageBound = [[39.08537075415818, 121.81089591217042],[39.09537075415818, 121.82089591217042]];
+        var overlay = L.imageOverlay(imageUrl,imageBound);
+        overlay.addTo(map);
      </script>
  </body>
  </html>
