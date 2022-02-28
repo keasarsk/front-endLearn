@@ -1,8 +1,0 @@
-简写count.vue中各种 $store.xxx 
-        <h1>当前求和为:{{$store.state.sum}}</h1>
-        <h1>当前求和放大十倍为 {{$store.getters.fangda}}</h1>
-        <h1>我在{{$store.state.school}}学习{{$store.state.subject}}</h1>
-
-
-mapState () 
-mapGetters ()

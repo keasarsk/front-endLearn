@@ -1,0 +1,61 @@
+<!-- 需求:改变姓或名时延迟一秒实现 -->
+<!-- 
+    computed和lwatch之间的区别:
+        1.computed能完成的功能,watch都可以完成。
+        2.watch能完成的功能，computed不一定能完成，例如: watch可以进行异步操作。
+        两个重要的小原则:
+            1.所被Vue管理的函数，最好写成普通函数，这样this的指向才是vm或组件实例对象。
+            2.所有不被Vue所管理的函数（定时器的回调函数、ajax的回调函数等、Promise的回调函数)，
+                最好写成箭头函数,这样this的指向才是vm 或组件实例对象。
+
+ -->
+<!-- computer实现: -->
+<script>
+    Vue.config.productionTip = false
+    const vm = new Vue({
+        el:'#root',
+        data:{
+            xing:'',
+            ming:''
+        },
+        computed:{
+
+            fullname(){
+                setTimeout(()=>{
+                    //此时是无法实现想要实现的等待操作
+                    //因为return返回给的是setTimeout函数
+                    return this.xing + this.ming
+                },1000);
+                
+            }
+        }
+        
+    })
+</script>
+<!-- watch实现 -->
+<script>
+    Vue.config.productionTip = false
+    const vm = new Vue({
+        el:'#root',
+        data:{
+            isHot:true,
+        },
+        watch:{
+            firstName(newVal){
+                setTimeout(()=>{
+                    this.fullname = newVal + '-' + this.lastName
+                },1000);
+            },
+            lastName(newVal){
+                setTimeout(()=>{
+                    this.fullname = this.lastName + '-' + newVal
+                },1000);
+            }
+        }
+    })
+</script>
+<!-- 总结 -->
+<!-- computer属性无法实现异步操作(比如延迟一秒再执行) -->
+
+<!-- 此例中的setTimeout用了箭头函数 -->
+<!--  -->

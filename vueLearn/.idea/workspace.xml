@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d700e061-55a6-473c-b68d-f03aa17596e3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../LeafletLearn/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/../LeafletLearn/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/01_初识vue.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/02_模板语法.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/03_数据绑定.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/04_el与data的两种写法.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/05_MVVM模型.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/06_数据代理/回顾Object.defineproperty.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/07_事件处理/事件修饰符.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/07_事件处理/事件的 基本使用.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/07_事件处理/键盘事件.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/08_计算属性与监视/天气案例_深度监视.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/08_计算属性与监视/天气案例_监视属性.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/08_计算属性与监视/天气案例_监视属性_简写.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/08_计算属性与监视/天气案例_计算属性.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/08_计算属性与监视/姓名案例_method.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/08_计算属性与监视/姓名案例_插值语法.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/08_计算属性与监视/姓名案例_计算属性.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/08_计算属性与监视/计算属性和监视属性对比.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/10_绑定样式/绑定样式.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/11_条件渲染/条件渲染.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/列表渲染/1_列表渲染.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/列表渲染/2_key原理.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/列表渲染/3_列表过滤搜索.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/01_Learn/列表渲染/4_列表排序.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/js/vue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex/babel.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex/src/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex/src/assets/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex/src/components/Count.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex/src/components/HelloWorld.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex/src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex/src/router/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex/src/store/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex/src/views/About.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex/src/views/Home.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.28src_getter/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.28src_getter/assets/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.28src_getter/components/Count.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.28src_getter/components/HelloWorld.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.28src_getter/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.28src_getter/store/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_mapMutations/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_mapMutations/ReadMe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_mapMutations/assets/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_mapMutations/components/Count.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_mapMutations/components/HelloWorld.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_mapMutations/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_mapMutations/store/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_mapState/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_mapState/ReadMe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_mapState/assets/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_mapState/components/Count.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_mapState/components/HelloWorld.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_mapState/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_mapState/store/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_multishare/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_multishare/ReadMe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_multishare/assets/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_multishare/components/Count.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_multishare/components/Person.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_multishare/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/1.29src_multishare/store/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/babel.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/src/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/src/ReadMe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/src/assets/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/src/components/Count.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/src/components/Person.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/src/store/countAbout.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/src/store/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vueLearn_shangguigu/vuex2/src/store/personAbout.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="25h9hRleFvGEajiYPOK5fiPwezy" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d700e061-55a6-473c-b68d-f03aa17596e3" name="Changes" comment="" />
+      <created>1645968576065</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1645968576065</updated>
+      <workItem from="1645968578185" duration="1809000" />
+    </task>
+    <servers />
+  </component>
+</project>

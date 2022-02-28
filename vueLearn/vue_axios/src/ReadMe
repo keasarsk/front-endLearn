@@ -1,0 +1,10 @@
+网络模块
+
+    vue发送网络请求多种方式之一 axios
+
+
+在任何一个文件中都可以使用
+
+一, 安装依赖
+    npm install axios --save
+
