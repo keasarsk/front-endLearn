@@ -27,6 +27,8 @@
         Vue.config.productionTip = false
         const v = new Vue({
             // el:'#root',  el的第一种写法 即定义vue的时候就写好为哪个容器服务
+
+            
             // data:{//data的第一种写法: 对象式
             //     name:'sk'
             // }
@@ -39,7 +41,8 @@
                 }
             }
         });
-        v.$mount('#root')//mount有挂载之意 vue的第二种写法 即定义完vue后再确定为哪个容器服务
+
+        v.$mount('#root')//mount有挂载之意 vue el的第二种写法 即定义完vue后再确定为哪个容器服务
     </script>
 </body>
 </html>

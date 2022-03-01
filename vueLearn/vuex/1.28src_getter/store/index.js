@@ -16,6 +16,7 @@ const state = {
   school:'大工',
   subject:'软件工程'
 }
+
 // 准备actions配置项---响应组件的动作
 const actions = {
   jianOdd(context,value){
@@ -31,6 +32,7 @@ const actions = {
     }, 500);
   }
 }
+
 // 准备mutations配置项---用于操作数据(state)
 const mutations = {
   JIA(state,value){
@@ -50,6 +52,7 @@ const mutations = {
     state.sum += value
   }
 }
+
 // 准备mutations配置项---用于将state中的数据进行加工
 const getters = {
   fangda(state){

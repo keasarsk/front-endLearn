@@ -24,7 +24,7 @@
         <ul>
             <!-- 遍历字符串 -->
             <h2>遍历字符串</h2>
-            <li v-for='(p,index) in str' :key="index">{{char}}-{{index}}</li>
+            <li v-for='(p,index) in str' >{{p}}-{{index}}</li>
         </ul>
         
         
@@ -43,8 +43,9 @@
                 {id:'001',name:'张三',age:'18'},
                 {id:'002',name:'李四',age:'18'},
                 {id:'003',name:'王五',age:'18'}
-            ]
-            }
+            ],
+            str:'rtgertefsef'
+        }
         
     })
 </script>

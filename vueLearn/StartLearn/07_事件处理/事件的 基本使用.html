@@ -18,7 +18,7 @@
     <div id = 'root'>
         <!-- 当点击这个button时候 vue就会去实例里面找你定义的"showInfo"函数 -->
         <button v-on:click="showInfo">点击提示信息(不传参数)</button>
-        <button v-on:click="showInfo2($event,66)">点击提示信息(传参)</button>
+        <button @click="showInfo2($event,66)">点击提示信息(传参)</button>
         <!-- //此处$event占了参数一个位 -->
 
     </div>

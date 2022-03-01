@@ -29,19 +29,6 @@ export default {
         }
     },
     computed:{
-        // 靠程序员自己写计算属性:
-        // sum(){
-        //     return this.$store.state.sum
-        // },
-        // fangdashibei(){
-        //     return this.$store.getters.fangda
-        // },
-        // school(){
-        //     return this.$store.state.school
-        // },
-        // xueke(){
-        //     return this.$store.state.subject
-        // }
 
         // 靠mapState mapGetters生成计算属性(对象写法):
         // ...mapState({sum:'sum',school:'school',xueke:'subject'})
@@ -71,6 +58,7 @@ export default {
         //     this.$store.dispatch('jianWait',this.n)
         // },
 
+        
         // mapMutations 生成调用commit (对象写法)
         // 此时需要传的参数需要在使用increment 和 decrement处使用 即上13 15行
         ...mapMutations({increment:'JIA',decrement:'JIAN'}),

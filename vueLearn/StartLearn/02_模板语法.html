@@ -23,7 +23,8 @@
         <h3>hello {{name}} </h3>
         <hr/>
         <h1>指令语法</h1>
-        <a href={{url}}>sk的第一个网站</a>
+        <!-- 此时不行 并没有把url对象作为url传入 -->
+        <a href={{url}}>bing</a>
         <hr>
         <a :href="url" >bing</a>
         <hr>

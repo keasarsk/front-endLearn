@@ -38,11 +38,11 @@ export default {
         // },
         // xueke(){
         //     return this.$store.state.subject
-        }
+        // }
 
         // 靠mapState mapGetters生成计算属性(对象写法):
         // ...mapState({sum:'sum',school:'school',xueke:'subject'})
-        ...mapGetters({fangdashibei:'fangda'})
+        ...mapGetters({fangdashibei:'fangda'}),
 
         // 靠mapState mapGetters生成计算属性(数组写法):
         // 此时生成的计算属性名和state中的名字一致

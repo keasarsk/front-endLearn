@@ -1,0 +1,5 @@
+Vuex允许在store中定义getters 
+(可以认为是store的计算属性) 
+getter的返回值会根据它的依赖项被缓存,依赖项发生改变时重新计算
+
+和state actions等 同级
